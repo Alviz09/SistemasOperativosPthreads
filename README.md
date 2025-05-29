@@ -1,4 +1,4 @@
-# POSIX Threads Challenge Makefile
+# POSIX Threads Challenges
 
 **Autor:** Juan Sebastian Alvarez Rodriguez  
 ---
