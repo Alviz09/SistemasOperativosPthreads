@@ -1,22 +1,55 @@
-# Makefile for compiling and running POSIX thread challenges
-# Author: Generated based on challenges by Juan Sebastian Alvarez Rodriguez
-# Description: This Makefile compiles and runs 10 C programs demonstrating POSIX threads and synchronization mechanisms.
-# Each challenge is compiled into an executable and can be run individually or all at once.
+# POSIX Threads Challenge Makefile
 
-# Compiler and flags
-CC = gcc
-CFLAGS = -Wall -pthread
-TARGETS = challenge1 challenge2 challenge3 challenge4 challenge5 challenge6 challenge7 challenge8 challenge9 challenge10
+**Autor:** Juan Sebastian Alvarez Rodriguez  
+---
 
-# Summary of Challenges:
-# challenge1.c: Creates two threads that print messages using print_message_function. Uses pthread_join to ensure the main thread waits for child threads to complete.
-# challenge2.c: Creates 10 threads that increment a shared counter using a mutex for synchronization. Prints thread number, ID, and final counter value (expected: 10).
-# challenge3.c: Two threads increment a shared counter, with count01 pausing between counts 4-11 using a condition variable. Both threads stop at count 15.
-# challenge4.c: Three threads execute the compute function, using a mutex to ensure ordered execution of simulated tasks, printing "Job N started" and "Job N finished".
-# challenge5.c: Three threads print parts of a sentence ("Estoy aprendiendo", "de forma rapida y divertida", "porque soy el mejor!!") in order using pthread_join.
-# challenge6.c: Two threads modify a shared variable (sum) in opposite directions (+1 and -1) over 900M iterations, without synchronization, printing the final sum.
-# challenge7.c: One thread modifies a shared variable (sum) by adding a negative value (-900M) over 900M iterations, printing the final sum.
-# challenge8.c: Two threads access a critical section protected by a semaphore, simulating a 4-second operation with mutual exclusion, printing entry and exit messages.
-# challenge9.c: Two threads increment and decrement a shared balance variable 10M times each, using a semaphore for synchronization, expecting a final balance of 0.
-# challenge10.c: Three threads print parts of a sentence in order ("Estoy aprendiendo", "de forma rapida y divertida", "porque soy el mejor!!") using semaphores for synchronization.
+## 📘 Descripción de Retos
 
+### ✅ challenge1.c  
+- Crea dos hilos que imprimen mensajes mediante `print_message_function`.
+- Usa `pthread_join` para que el hilo principal espere la finalización de los hilos secundarios.
+
+### ✅ challenge2.c  
+- Crea 10 hilos que incrementan un contador compartido.
+- Usa un `mutex` para evitar condiciones de carrera.
+- Imprime el número de hilo, su ID, y el valor final del contador (esperado: 10).
+
+### ✅ challenge3.c  
+- Dos hilos incrementan un contador compartido.
+- El hilo `count01` se pausa entre los valores 4 y 11 usando una *variable de condición*.
+- Ambos hilos terminan cuando el contador llega a 15.
+
+### ✅ challenge4.c  
+- Tres hilos ejecutan una función `compute` que simula tareas usando `sleep`.
+- Un `mutex` asegura la ejecución ordenada.
+- Imprime mensajes "Job N started" y "Job N finished".
+
+### ✅ challenge5.c  
+- Tres hilos imprimen partes de una frase:  
+  `"Estoy aprendiendo"`, `"de forma rápida y divertida"`, `"porque soy el mejor!!"`.
+- La sincronización se logra usando `pthread_join` para controlar el orden.
+
+### ✅ challenge6.c  
+- Dos hilos modifican una variable compartida (`sum`), uno sumando y el otro restando.
+- Se ejecutan 900 millones de iteraciones sin sincronización.
+- Se imprime el resultado final, que probablemente no será 0 por condiciones de carrera.
+
+### ✅ challenge7.c  
+- Un solo hilo modifica `sum` con un valor negativo (-900M) durante 900 millones de iteraciones.
+- Imprime el resultado final.
+
+### ✅ challenge8.c  
+- Dos hilos acceden a una sección crítica simulada (4 segundos).
+- Se protege con un *semáforo* para garantizar la exclusión mutua.
+- Imprime mensajes al entrar y salir de la sección crítica.
+
+### ✅ challenge9.c  
+- Un hilo incrementa y otro decrementa una variable `balance` 10 millones de veces.
+- Usa un semáforo para sincronización.
+- El resultado esperado del balance final es **0**.
+
+### ✅ challenge10.c  
+- Tres hilos imprimen partes de una frase en orden, igual que en el reto 5.
+- Esta vez, la sincronización se logra usando *semáforos POSIX*.
+
+---
